@@ -5,4 +5,4 @@ void displayMenu();
 void handleMenuChoice();
 void searchMovies();
 
-#endif 
+#endif
