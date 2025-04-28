@@ -1,21 +1,26 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
-#include "menu.h"
+#include <iomanip> // For setw
 
 void displayMenu() {
-    std::cout << "Main Menu:\n";
-    std::cout << "1. Search Movies\n";
-    std::cout << "2. Book Ticket\n";
-    std::cout << "3. View Bookings\n";
-    std::cout << "4. Access Admin Panel\n";
-    std::cout << "5. Exit\n";
+    std::cout << "\n";
+    std::cout << "  +---------------------------+\n";
+    std::cout << "  |       Movie Ticket        |\n";
+    std::cout << "  |         System            |\n";
+    std::cout << "  +---------------------------+\n";
+    std::cout << "  | 1. Search Movies          |\n";
+    std::cout << "  | 2. Book Ticket            |\n";
+    std::cout << "  | 3. View Bookings          |\n";
+    std::cout << "  | 4. Access Admin Panel     |\n";
+    std::cout << "  | 5. Exit                   |\n";
+    std::cout << "  +---------------------------+\n";
+    std::cout << "  Enter your choice: ";
 }
 
 void searchMovies() {
     std::string city;
-    std::cout << "Please choose a city (Sofia, Plovdiv, Varna, Burgas, Ruse): ";
+    std::cout << "\nPlease choose a city (Sofia, Plovdiv, Varna, Burgas, Ruse): ";
     std::cin >> city;
-
     std::cout << "Searching movies in " << city << "..." << std::endl;
 }
 
@@ -31,22 +36,22 @@ void handleMenuChoice() {
             searchMovies();
             break;
         case 2:
-            std::cout << "Booking Ticket..." << std::endl;
+            std::cout << "\nBooking Ticket..." << std::endl;
             // Add booking functionality here
             break;
         case 3:
-            std::cout << "Viewing Bookings..." << std::endl;
+            std::cout << "\nViewing Bookings..." << std::endl;
             // Add view bookings functionality here
             break;
         case 4:
-            std::cout << "Accessing Admin Panel..." << std::endl;
+            std::cout << "\nAccessing Admin Panel..." << std::endl;
             // Add admin panel functionality here
             break;
         case 5:
-            std::cout << "Exiting the system. Thank you!" << std::endl;
+            std::cout << "\nExiting the system. Thank you!\n" << std::endl;
             break;
         default:
-            std::cout << "Invalid choice. Please try again." << std::endl;
+            std::cout << "\nInvalid choice. Please try again.\n" << std::endl;
         }
     } while (choice != 5);
 }
