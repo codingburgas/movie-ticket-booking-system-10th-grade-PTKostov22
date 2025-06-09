@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-bool login();
+bool login(std::string& loggedInUserEmail, bool& isAdmin);
 
 #endif

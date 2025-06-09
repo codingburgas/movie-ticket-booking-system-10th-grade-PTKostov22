@@ -1,17 +1,16 @@
 #include <iostream>
-#include "menu.h" // Include the header
+#include "menu.h"
 #include "login.h"
 
 int main() {
-    std::cout << "Calling login() from main()\\n"; // Added
-    if (login()) {
-        std::cout << "login() returned true, calling handleMenuChoice()\\n"; // Added
-        handleMenuChoice();
-        std::cout << "handleMenuChoice() returned\\n"; // Added
+    std::string loggedInUserEmail;
+    bool isAdmin = false;
+
+    if (login(loggedInUserEmail, isAdmin)) {
+        handleMenuChoice(isAdmin);  // ????????? ????? ???
     }
     else {
-        std::cout << "login() returned false, exiting\\n"; // Added
+        std::cout << "Exiting...\n";
     }
-    std::cout << "Exiting main()\\n"; // Added
     return 0;
 }

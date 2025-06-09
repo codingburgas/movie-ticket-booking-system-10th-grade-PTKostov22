@@ -1,0 +1,4 @@
+atanas@admin.bg,1234,admin
+atanas@gmail.com,abcd,user
+ivan@admin.bg,password,admin
+ivan@gmail.com,password,user

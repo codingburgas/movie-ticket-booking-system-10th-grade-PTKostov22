@@ -1,54 +1,60 @@
-#include <iostream>
+﻿#include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include "login.h"
 
-bool login() {
-    std::string username;
-    std::string password;
+bool login(std::string& loggedInUserEmail, bool& isAdmin) {
+    std::string email, password;
     int attempts = 3;
 
-    std::cout << "\n";
-    std::cout << "  +-----------------------------------------+\n";
-    std::cout << "  |          Login to Movie Ticket          |\n";
-    std::cout << "  |                 System                  |\n";
-    std::cout << "  +-----------------------------------------+\n";
-    std::cout << "  |                                         |\n";
-    std::cout << "  |  Username:                              |\n";
-    std::cout << "  |  Password:                              |\n";
-    std::cout << "  |                                         |\n";
-    std::cout << "  +-----------------------------------------+\n";
+    while (attempts-- > 0) {
+        system("cls"); 
 
-    while (attempts > 0) {
-        // Use a loop to get username and password
-        std::cout << "\033[F\033[K"; // Move cursor up and erase line
-        std::cout << "\033[F\033[K";
-        std::cout << "  |  Username: ";
-        std::cin >> username;
-        std::cout << "\033[F\033[K"; // Move cursor up and erase line
-        std::cout << "  |  Password: ";
-        std::cin >> password; // In a real application, use secure input
+        std::cout << "=========================================\n";
+        std::cout << "           Welcome to Movie Ticket       \n";
+        std::cout << "                Login System              \n";
+        std::cout << "=========================================\n\n";
 
-        // Basic authentication (replace with your actual authentication logic)
-        if (username == "user" && password == "password") { // Hardcoded for demonstration
-            std::cout << "\n  +-----------------------------------------+\n";
-            std::cout << "  |          Login successful!              |\n";
-            std::cout << "  +-----------------------------------------+\n";
-            return true;
+        std::cout << "Enter Email: ";
+        std::cin >> email;
+        std::cout << "Enter Password: ";
+        std::cin >> password;
+
+        std::ifstream file("users.txt");
+        if (!file.is_open()) {
+            std::cout << "\nERROR: Could not open users.txt file.\n";
+            return false;
         }
-        else {
-            attempts--;
-            std::cout << "\n  +-----------------------------------------+\n";
-            std::cout << "  |  Invalid credentials. Attempts remaining:  |\n";
-            std::cout << "  |                 " << attempts << "                               |\n";
-            std::cout << "  +-----------------------------------------+\n";
-            if (attempts > 0) {
-                std::cout << "  |  Please try again.                       |\n";
-                std::cout << "  +-----------------------------------------+\n";
+
+        std::string line;
+        bool found = false;
+
+        while (getline(file, line)) {
+            std::stringstream ss(line);
+            std::string fileEmail, filePassword, role;
+
+            getline(ss, fileEmail, ',');
+            getline(ss, filePassword, ',');
+            getline(ss, role, ',');
+
+            if (email == fileEmail && password == filePassword) {
+                loggedInUserEmail = email;
+                isAdmin = (role == "admin");
+                std::cout << "\nLogin successful! Welcome, " << (isAdmin ? "Admin" : "User") << "!\n";
+                system("pause");
+                return true;
             }
         }
+
+        std::cout << "\nInvalid email or password. Attempts left: " << attempts << "\n";
+        if (attempts > 0) {
+            std::cout << "Please try again.\n";
+            system("pause");
+        }
     }
-    std::cout << "\n  +-----------------------------------------+\n";
-    std::cout << "  |          Login failed. Exiting.           |\n";
-    std::cout << "  +-----------------------------------------+\n";
+
+    std::cout << "\nToo many failed attempts. Exiting...\n";
+    system("pause");
     return false;
 }
