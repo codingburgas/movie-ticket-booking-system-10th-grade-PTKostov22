@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 #include "menu.h"
+#include "search_movies.h"
 
 void displayMenu(bool isAdmin) {
     system("cls");
@@ -49,6 +50,7 @@ void handleMenuChoice(bool isAdmin) {
             case 5:
                 std::cout << "\nЕxiting the system. Thank you!\n";
                 break;
+
             default:
                 std::cout << "\nInvalid choice. Please try again.\n\n";
                 system("pause");
@@ -76,12 +78,4 @@ void handleMenuChoice(bool isAdmin) {
             }
         }
     } while ((isAdmin && choice != 5) || (!isAdmin && choice != 4));
-}
-
-void searchMovies() {
-    std::string city;
-    std::cout << "\nPlease choose a city (Sofia, Plovdiv, Varna, Burgas, Ruse): ";
-    std::cin >> city;
-    std::cout << "\n🔎 Searching movies in " << city << "...\n\n";
-    system("pause");
 }

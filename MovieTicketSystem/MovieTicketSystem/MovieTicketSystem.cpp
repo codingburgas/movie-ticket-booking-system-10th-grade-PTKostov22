@@ -1,4 +1,5 @@
 #include <iostream>
+#include "search_movies.h"
 #include "menu.h"
 #include "login.h"
 

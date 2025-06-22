@@ -1,0 +1,5 @@
+Avatar|English|Sci-Fi|2009-12-18
+Titanic|English|Romance|1997-12-19
+Amelie|French|Romantic Comedy|2001-04-25
+Parasite|Korean|Thriller|2019-05-30
+The Matrix|English|Action|1999-03-31
