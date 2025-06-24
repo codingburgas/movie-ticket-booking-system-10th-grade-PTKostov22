@@ -1,5 +1,100 @@
-Avatar|English|Sci-Fi|2009-12-18
-Titanic|English|Romance|1997-12-19
-Amelie|French|Romantic Comedy|2001-04-25
-Parasite|Korean|Thriller|2019-05-30
-The Matrix|English|Action|1999-03-31
+Cold War|Spanish|Action|1986-06-18
+Frozen|Japanese|Romance|2019-06-17
+Cinema Paradiso|French|Drama|2003-11-24
+La La Land|Japanese|Romance|1983-07-26
+Amelie|Korean|Thriller|1994-12-20
+The Handmaiden|Italian|Drama|2001-07-03
+The Dark Knight|Italian|Comedy|2023-01-16
+Burning|English|Thriller|1981-07-25
+Burning|Korean|Sci-Fi|2000-09-18
+Pan's Labyrinth|French|Mystery|1982-12-02
+Titanic|English|Horror|2017-02-26
+Pan's Labyrinth|Japanese|Fantasy|1986-09-05
+Cold War|Spanish|Action|1984-03-19
+The Intouchables|Spanish|Sci-Fi|1989-11-02
+The Great Beauty|Japanese|Drama|1981-01-03
+The Handmaiden|French|Comedy|2004-06-27
+Cinema Paradiso|French|Drama|2019-11-29
+The Lion King|Korean|Drama|2015-06-06
+Burning|German|Comedy|1987-03-14
+Frozen|Japanese|Comedy|2015-01-27
+Pulp Fiction|Japanese|Comedy|2000-09-03
+Weathering With You|Spanish|Horror|2022-01-07
+La La Land|Japanese|Horror|1980-04-24
+The Secret in Their Eyes|Spanish|Sci-Fi|1996-10-26
+The Handmaiden|Italian|Drama|2018-01-16
+Amelie|Spanish|Sci-Fi|1980-02-02
+Roma|Bulgarian|Comedy|2005-10-03
+Fight Club|French|Fantasy|1996-05-26
+The Square|Korean|Drama|2021-07-22
+The Secret in Their Eyes|German|Action|2014-07-01
+Portrait of a Lady on Fire|French|Mystery|2015-04-05
+Burning|Spanish|Action|1983-06-01
+The Shawshank Redemption|French|Thriller|2018-05-20
+Life Is Beautiful|French|Thriller|2002-02-11
+A Separation|Bulgarian|Romance|1982-07-17
+Son of Saul|Japanese|Drama|2015-08-15
+The Handmaiden|German|Sci-Fi|2003-08-23
+Fight Club|Italian|Sci-Fi|2010-01-25
+The Salesman|Japanese|Horror|1998-04-30
+Wild Tales|Korean|Drama|1987-03-24
+The Lives of Others|Bulgarian|Mystery|1999-09-11
+Amelie|German|Action|2008-04-21
+La La Land|French|Thriller|1998-06-14
+Portrait of a Lady on Fire|Spanish|Fantasy|2008-09-24
+Train to Busan|Korean|Drama|2020-06-05
+Son of Saul|Spanish|Romance|1980-06-29
+Roma|Korean|Sci-Fi|1988-03-31
+Amelie|Spanish|Sci-Fi|1983-06-15
+The Matrix|French|Drama|1998-02-25
+Train to Busan|French|Sci-Fi|2019-11-29
+Portrait of a Lady on Fire|French|Comedy|2018-11-21
+The Lion King|Italian|Sci-Fi|2015-06-23
+The Godfather|Korean|Thriller|1991-05-14
+Wild Tales|German|Romance|1993-11-01
+Spirited Away|Italian|Thriller|1993-03-17
+A Separation|German|Thriller|1997-06-05
+Interstellar|Bulgarian|Mystery|1999-08-15
+The Grand Budapest Hotel|Spanish|Drama|2021-08-29
+Avatar|Japanese|Horror|1995-02-15
+The Prestige|French|Thriller|2004-07-17
+Frozen|English|Mystery|2009-04-17
+The Secret in Their Eyes|German|Drama|2008-02-11
+Your Name|English|Sci-Fi|1985-09-29
+Titanic|Bulgarian|Romance|1981-09-14
+Shoplifters|Italian|Sci-Fi|2009-08-11
+Cinema Paradiso|French|Fantasy|1998-09-21
+Roma|Bulgarian|Fantasy|1983-09-09
+Shoplifters|Spanish|Sci-Fi|2005-02-05
+The Matrix|English|Sci-Fi|2020-07-14
+The Salesman|French|Romance|1983-05-13
+A Separation|Bulgarian|Romance|1992-08-05
+Wild Tales|Bulgarian|Drama|1993-05-13
+The Matrix|Spanish|Sci-Fi|2023-05-01
+The Shawshank Redemption|Korean|Sci-Fi|2023-05-04
+Inception|Korean|Romance|1998-07-15
+Weathering With You|French|Comedy|1994-07-03
+Spirited Away|French|Sci-Fi|2013-10-11
+Your Name|Italian|Horror|2005-03-16
+The Great Beauty|Spanish|Thriller|2002-03-23
+Portrait of a Lady on Fire|Bulgarian|Comedy|2001-04-15
+The Dark Knight|English|Comedy|1983-04-11
+The Lion King|Bulgarian|Horror|2000-06-15
+Inception|German|Drama|2013-09-01
+The Secret in Their Eyes|Spanish|Drama|2016-04-03
+Gladiator|German|Mystery|2023-07-27
+Frozen|Italian|Thriller|1985-05-20
+Another Round|German|Drama|1987-06-28
+Inception|Japanese|Fantasy|1989-07-31
+Titanic|German|Horror|1998-08-14
+Weathering With You|Spanish|Mystery|1989-11-20
+Roma|Korean|Comedy|2006-01-26
+Fight Club|Italian|Horror|1987-02-27
+The Prestige|Bulgarian|Sci-Fi|2010-02-05
+Joker|Spanish|Action|2021-07-05
+The Godfather|Japanese|Thriller|1997-02-11
+Life Is Beautiful|Bulgarian|Sci-Fi|2004-09-30
+The Great Beauty|Spanish|Thriller|2016-11-27
+Roma|Italian|Drama|2001-07-19
+Weathering With You|Japanese|Sci-Fi|2004-07-01
+Life Is Beautiful|Bulgarian|Drama|1989-11-12
