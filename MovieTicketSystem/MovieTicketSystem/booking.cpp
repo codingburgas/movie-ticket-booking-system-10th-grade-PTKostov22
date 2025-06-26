@@ -43,7 +43,6 @@ void selectSeats() {
         }
     }
 
-    // Example: mark some seats as reserved and booked
     layout[0][0].status = BOOKED;   // A1
     layout[1][1].status = RESERVED; // B2
     layout[2][2].status = BOOKED;   // C3

@@ -27,6 +27,9 @@
     <ClCompile Include="search_movies.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="booking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="search_movies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="booking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
