@@ -12,21 +12,18 @@ struct Movie {
     std::string releaseDate;
 };
 
-// Lowercase function
 std::string toLower(const std::string& str) {
     std::string lowerStr = str;
     std::transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
     return lowerStr;
 }
 
-// Trim function
 std::string trim(const std::string& str) {
     size_t start = str.find_first_not_of(" \t\r\n");
     size_t end = str.find_last_not_of(" \t\r\n");
     return (start == std::string::npos) ? "" : str.substr(start, end - start + 1);
 }
 
-// 💥 SEARCH FUNCTION
 void searchMovies() {
     std::ifstream file("movies.txt");
 
@@ -39,9 +36,7 @@ void searchMovies() {
     std::vector<Movie> movies;
     std::string line;
 
-    // Load all movies from file
     while (std::getline(file, line)) {
-        std::cout << "[LOADED LINE] " << line << '\n'; // posle da se iztrie
         std::stringstream ss(line);
         std::string title, language, genre, releaseDate;
 
@@ -78,9 +73,6 @@ void searchMovies() {
 
     for (const auto& movie : movies) {
         std::string year = movie.releaseDate.substr(0, 4);
-
-        // DEBUG OUTPUT
-        std::cout << "[DEBUG] " << movie.title << " | year: [" << year << "]\n";
 
         switch (choice) {
         case 1:
