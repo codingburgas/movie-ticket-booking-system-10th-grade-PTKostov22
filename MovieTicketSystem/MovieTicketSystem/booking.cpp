@@ -102,6 +102,7 @@ std::vector<MovieSchedule> loadSchedule() {
 
 void selectSeats(const std::string& loggedInUserEmail) {
     clearScreen();
+    std::cout << "DEBUG: Received loggedInUserEmail = '" << loggedInUserEmail << "'\n";
 
     std::vector<std::string> cities = { "Sofia", "Plovdiv", "Varna", "Burgas", "Ruse" };
     std::map<std::string, std::vector<std::string>> cinemas = {
@@ -115,9 +116,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
     std::vector<MovieSchedule> schedule = loadSchedule();
 
     std::cout << "Select a City:\n";
-    for (size_t i = 0; i < cities.size(); ++i) {
+    for (size_t i = 0; i < cities.size(); ++i)
         std::cout << i + 1 << ". " << cities[i] << "\n";
-    }
     std::cout << "Enter choice: ";
     int cityChoice;
     std::cin >> cityChoice;
@@ -133,9 +133,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
     clearScreen();
     const auto& cinemaList = cinemas[selectedCity];
     std::cout << "Select a Cinema in " << selectedCity << ":\n";
-    for (size_t i = 0; i < cinemaList.size(); ++i) {
+    for (size_t i = 0; i < cinemaList.size(); ++i)
         std::cout << i + 1 << ". " << cinemaList[i] << "\n";
-    }
     std::cout << "Enter choice: ";
     int cinemaChoice;
     std::cin >> cinemaChoice;
@@ -150,9 +149,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
 
     clearScreen();
     std::cout << "Available Movies:\n";
-    for (size_t i = 0; i < schedule.size(); ++i) {
+    for (size_t i = 0; i < schedule.size(); ++i)
         std::cout << i + 1 << ". " << schedule[i].title << "\n";
-    }
     std::cout << "Enter choice: ";
     int movieChoice;
     std::cin >> movieChoice;
@@ -163,14 +161,12 @@ void selectSeats(const std::string& loggedInUserEmail) {
         pauseScreen();
         return;
     }
-
     const MovieSchedule& selectedMovie = schedule[movieChoice - 1];
 
     clearScreen();
     std::cout << "Available Showtimes for " << selectedMovie.title << ":\n";
-    for (size_t i = 0; i < selectedMovie.showtimes.size(); ++i) {
+    for (size_t i = 0; i < selectedMovie.showtimes.size(); ++i)
         std::cout << i + 1 << ". " << selectedMovie.showtimes[i] << "\n";
-    }
     std::cout << "Enter choice: ";
     int timeChoice;
     std::cin >> timeChoice;
@@ -182,6 +178,7 @@ void selectSeats(const std::string& loggedInUserEmail) {
         return;
     }
     std::string selectedTime = selectedMovie.showtimes[timeChoice - 1];
+
 
     clearScreen();
     std::cout << "Booking Summary:\n";
@@ -199,7 +196,6 @@ void selectSeats(const std::string& loggedInUserEmail) {
     std::cin.ignore();
 
     std::vector<std::string> selectedSeats;
-
     for (int i = 0; i < numberOfSeats; ++i) {
         std::string seatId;
         std::cout << "Enter Seat ID (e.g., A1): ";
@@ -213,19 +209,13 @@ void selectSeats(const std::string& loggedInUserEmail) {
     std::cin.ignore();
 
     if (confirm == 'Y' || confirm == 'y') {
-        // Extract logged-in email
-        std::string email;
-        std::ifstream loginTemp("loggedInUser.txt");
-        if (loginTemp.is_open()) {
-            std::getline(loginTemp, email);
-            loginTemp.close();
+        std::string username = "unknown_user";
+        size_t atPos = loggedInUserEmail.find('@');
+        if (atPos != std::string::npos) {
+            username = loggedInUserEmail.substr(0, atPos);
         }
 
-        std::string username = "unknown_user";
-        size_t atPos = email.find('@');
-        if (atPos != std::string::npos) {
-            username = email.substr(0, atPos);
-        }
+        std::cout << "DEBUG: Extracted username = '" << username << "'\n";
 
         std::string profilePath = "profiles/" + username + ".txt";
         std::ofstream profile(profilePath, std::ios::app);
@@ -237,9 +227,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
             profile << "Cinema: " << selectedCinema << "\n";
             profile << "Showtime: " << selectedTime << "\n";
             profile << "Seats: ";
-            for (const std::string& seat : selectedSeats) {
+            for (const std::string& seat : selectedSeats)
                 profile << seat << " ";
-            }
             profile << "\n";
             profile.close();
 
@@ -255,3 +244,4 @@ void selectSeats(const std::string& loggedInUserEmail) {
 
     pauseScreen();
 }
+

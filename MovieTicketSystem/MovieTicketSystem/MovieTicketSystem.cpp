@@ -23,6 +23,8 @@ int main() {
         showWelcomeMenu();
         std::cin >> choice;
 
+        std::cout << "DEBUG: loggedInUserEmail in main = '" << loggedInUserEmail << "'\n"; //tva e ok
+
         switch (choice) {
         case 1:
             if (login(loggedInUserEmail, isAdmin)) {

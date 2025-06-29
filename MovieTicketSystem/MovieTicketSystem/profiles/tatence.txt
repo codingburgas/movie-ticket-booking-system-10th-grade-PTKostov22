@@ -1,3 +1,10 @@
 Email: tatence@abv.bg
 Role: user
 Bookings:
+
+Booking:
+Movie: Titanic
+City: Sofia
+Cinema: Mall of Sofia
+Showtime: English|Horror|2025-07-01|10:00
+Seats: A1 A2 A3 
