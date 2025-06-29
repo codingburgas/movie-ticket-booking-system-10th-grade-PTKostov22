@@ -3,7 +3,7 @@
 #include <iomanip>
 #include "menu.h"
 #include "search_movies.h"
-#include "booking.h  "
+#include "booking.h"
 
 void displayMenu(bool isAdmin) {
     system("cls");
@@ -24,7 +24,7 @@ void displayMenu(bool isAdmin) {
     std::cout << "Enter your choice: ";
 }
 
-void handleMenuChoice(bool isAdmin) {
+void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
     int choice;
 
     do {
@@ -37,7 +37,7 @@ void handleMenuChoice(bool isAdmin) {
                 searchMovies();
                 break;
             case 2:
-                selectSeats();
+                void handleMenuChoice(bool isAdmin, const std::string & loggedInUserEmail);
                 system("pause");
                 break;
             case 3:
@@ -63,7 +63,7 @@ void handleMenuChoice(bool isAdmin) {
                 searchMovies();
                 break;
             case 2:
-                selectSeats();
+                selectSeats(loggedInUserEmail);
                 system("pause");
                 break;
             case 3:

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <regex>  
+#include <regex>
 #include "login.h"
 
 bool login(std::string& loggedInUserEmail, bool& isAdmin) {

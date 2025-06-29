@@ -26,7 +26,7 @@ int main() {
         switch (choice) {
         case 1:
             if (login(loggedInUserEmail, isAdmin)) {
-                handleMenuChoice(isAdmin);
+                handleMenuChoice(isAdmin, loggedInUserEmail);
             }
             break;
         case 2:

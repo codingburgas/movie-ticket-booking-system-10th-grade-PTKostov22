@@ -19,6 +19,6 @@ struct Seat {
 };
 
 // Function declaration
-void selectSeats();
+void selectSeats(const std::string& loggedInUserEmail);
 
 #endif // BOOKING_H

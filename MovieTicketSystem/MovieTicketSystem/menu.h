@@ -2,7 +2,7 @@
 #define MENU_H
 
 void displayMenu();
-void handleMenuChoice(bool isAdmin);
+void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail);
 void searchMovies();
 
 #endif

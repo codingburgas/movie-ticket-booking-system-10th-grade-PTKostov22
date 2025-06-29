@@ -4,6 +4,7 @@
 #include <map>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -37,8 +38,23 @@ void pauseScreen() {
     std::cin.get();
 }
 
+std::vector<std::vector<Seat>> generateSeatLayout() {
+    std::vector<std::vector<Seat>> layout;
+    for (char row = 'A'; row <= 'J'; ++row) {
+        std::vector<Seat> seatRow;
+        for (int col = 1; col <= 15; ++col) {
+            Seat seat;
+            seat.id = row + std::to_string(col);
+            seat.status = AVAILABLE;
+            seatRow.push_back(seat);
+        }
+        layout.push_back(seatRow);
+    }
+    return layout;
+}
+
 void displaySeatLayout(const std::vector<std::vector<Seat>>& layout) {
-    std::cout << "\nSeat Layout (Green = Available, Gray = Reserved, Red = Booked):\n\n";
+    std::cout << "\nSeat Layout (Green = Available):\n\n";
     for (const auto& row : layout) {
         for (const auto& seat : row) {
             switch (seat.status) {
@@ -57,22 +73,6 @@ void displaySeatLayout(const std::vector<std::vector<Seat>>& layout) {
     }
 }
 
-std::vector<std::vector<Seat>> generateSeatLayout() {
-    std::vector<std::vector<Seat>> layout;
-    for (char row = 'A'; row <= 'J'; ++row) {
-        std::vector<Seat> seatRow;
-        for (int col = 1; col <= 15; ++col) {
-            Seat seat;
-            seat.id = row + std::to_string(col);
-            seat.status = AVAILABLE;
-            seatRow.push_back(seat);
-        }
-        layout.push_back(seatRow);
-    }
-    return layout;
-}
-
-// Load the predefined schedule for all cinemas
 std::vector<MovieSchedule> loadSchedule() {
     std::vector<MovieSchedule> schedule;
     std::ifstream file("schedule.txt");
@@ -100,7 +100,7 @@ std::vector<MovieSchedule> loadSchedule() {
     return schedule;
 }
 
-void selectSeats() {
+void selectSeats(const std::string& loggedInUserEmail) {
     clearScreen();
 
     std::vector<std::string> cities = { "Sofia", "Plovdiv", "Varna", "Burgas", "Ruse" };
@@ -114,7 +114,6 @@ void selectSeats() {
 
     std::vector<MovieSchedule> schedule = loadSchedule();
 
-    // Select city
     std::cout << "Select a City:\n";
     for (size_t i = 0; i < cities.size(); ++i) {
         std::cout << i + 1 << ". " << cities[i] << "\n";
@@ -149,7 +148,6 @@ void selectSeats() {
     }
     std::string selectedCinema = cinemaList[cinemaChoice - 1];
 
-    // Select movie from the schedule
     clearScreen();
     std::cout << "Available Movies:\n";
     for (size_t i = 0; i < schedule.size(); ++i) {
@@ -168,7 +166,6 @@ void selectSeats() {
 
     const MovieSchedule& selectedMovie = schedule[movieChoice - 1];
 
-    // Select time
     clearScreen();
     std::cout << "Available Showtimes for " << selectedMovie.title << ":\n";
     for (size_t i = 0; i < selectedMovie.showtimes.size(); ++i) {
@@ -195,6 +192,66 @@ void selectSeats() {
 
     auto layout = generateSeatLayout();
     displaySeatLayout(layout);
+
+    int numberOfSeats;
+    std::cout << "\nEnter number of seats to book: ";
+    std::cin >> numberOfSeats;
+    std::cin.ignore();
+
+    std::vector<std::string> selectedSeats;
+
+    for (int i = 0; i < numberOfSeats; ++i) {
+        std::string seatId;
+        std::cout << "Enter Seat ID (e.g., A1): ";
+        std::getline(std::cin, seatId);
+        selectedSeats.push_back(seatId);
+    }
+
+    std::cout << "\nConfirm booking? (Y/N): ";
+    char confirm;
+    std::cin >> confirm;
+    std::cin.ignore();
+
+    if (confirm == 'Y' || confirm == 'y') {
+        // Extract logged-in email
+        std::string email;
+        std::ifstream loginTemp("loggedInUser.txt");
+        if (loginTemp.is_open()) {
+            std::getline(loginTemp, email);
+            loginTemp.close();
+        }
+
+        std::string username = "unknown_user";
+        size_t atPos = email.find('@');
+        if (atPos != std::string::npos) {
+            username = email.substr(0, atPos);
+        }
+
+        std::string profilePath = "profiles/" + username + ".txt";
+        std::ofstream profile(profilePath, std::ios::app);
+
+        if (profile.is_open()) {
+            profile << "\nBooking:\n";
+            profile << "Movie: " << selectedMovie.title << "\n";
+            profile << "City: " << selectedCity << "\n";
+            profile << "Cinema: " << selectedCinema << "\n";
+            profile << "Showtime: " << selectedTime << "\n";
+            profile << "Seats: ";
+            for (const std::string& seat : selectedSeats) {
+                profile << seat << " ";
+            }
+            profile << "\n";
+            profile.close();
+
+            std::cout << "\nBooking confirmed and saved to your profile!\n";
+        }
+        else {
+            std::cout << "\nERROR: Could not open user profile file.\n";
+        }
+    }
+    else {
+        std::cout << "Booking canceled.\n";
+    }
 
     pauseScreen();
 }
