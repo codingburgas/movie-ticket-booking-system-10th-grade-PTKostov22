@@ -1,9 +1,1 @@
-atanas@admin.bg,1234,admin
-atanas@gmail.com,abcd,user
-ivan@admin.bg,password,admin
-ivan@gmail.com,password,user
-kpetar176@gmail.com,12344321,user
-dimityrEpedal,123321,user
-mitkobg686@gmail.com,12344321,user
-kpetar188@gmail.com,12344321,user
-gmail@.,1234554321@A,user
+

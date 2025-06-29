@@ -61,14 +61,10 @@ bool login(std::string& loggedInUserEmail, bool& isAdmin) {
 
 void registerUser() {
     std::string email, password;
-    std::string role = "user"; // default role
-    bool hasUpper = false;
-    bool hasSpecial = false;
-    std::string specialChars = "!@#$%^&*()-_=+[]{}|;:',.<>?/";
+    const std::string role = "user"; // default role
+    const std::string specialChars = "!@#$%^&*()-_=+[]{}|;:',.<>?/";
 
-
-    bool valid = false;
-    while (!valid) {
+    while (true) {
         system("cls");
         std::cout << "+---------------------------------------+\n";
         std::cout << "|         Register New Account          |\n";
@@ -77,18 +73,51 @@ void registerUser() {
         std::cout << "Enter Email: ";
         std::cin >> email;
 
-        // Email validation
+        // Check for valid email format
         if (email.find('@') == std::string::npos || email.find('.') == std::string::npos) {
             std::cout << "\nInvalid email format. Email must contain '@' and '.'\n";
             system("pause");
             continue;
         }
 
-        std::cout << "Enter Password (min 6 characters): ";
+        // Check if email contains "admin" (case-insensitive)
+        std::string lowerEmail = email;
+        std::transform(lowerEmail.begin(), lowerEmail.end(), lowerEmail.begin(), ::tolower);
+        if (lowerEmail.find("admin") != std::string::npos) {
+            std::cout << "\nError: Cannot register with email containing 'admin'.\n";
+            std::cout << "Please choose a different email.\n";
+            system("pause");
+            continue;
+        }
+
+        // Check if email already exists
+        std::ifstream infile("users.txt");
+        std::string line;
+        bool emailExists = false;
+
+        while (std::getline(infile, line)) {
+            std::stringstream ss(line);
+            std::string existingEmail;
+            std::getline(ss, existingEmail, ',');
+            if (existingEmail == email) {
+                emailExists = true;
+                break;
+            }
+        }
+
+        if (emailExists) {
+            std::cout << "\nEmail already exists. Try logging in.\n";
+            system("pause");
+            return;
+        }
+
+        std::cout << "Enter Password (min 6 chars, 1 uppercase, 1 special char): ";
         std::cin >> password;
 
+        // Check password strength
+        bool hasUpper = false, hasSpecial = false;
         for (char ch : password) {
-            if (isupper(ch)) hasUpper = true;
+            if (std::isupper(ch)) hasUpper = true;
             if (specialChars.find(ch) != std::string::npos) hasSpecial = true;
         }
 
@@ -99,38 +128,45 @@ void registerUser() {
             continue;
         }
 
-        // Check for duplicate email
-        std::ifstream infile("users.txt");
-        std::string line;
-        bool emailExists = false;
-        while (getline(infile, line)) {
-            std::stringstream ss(line);
-            std::string existingEmail;
-            getline(ss, existingEmail, ',');
-            if (existingEmail == email) {
-                emailExists = true;
-                break;
-            }
-        }
-
-        if (emailExists) {
-            std::cout << "\nEmail already exists. Please try logging in.\n";
-            system("pause");
-            continue;
-        }
-
-        // Save new user
+        // Append new user to users.txt
         std::ofstream outfile("users.txt", std::ios::app);
         if (!outfile.is_open()) {
-            std::cout << "\nERROR: Could not open users.txt to write.\n";
+            std::cout << "ERROR: Could not open users.txt\n";
+            system("pause");
+            return;
+        }
+        outfile << email << "," << password << "," << role << "\n";
+        outfile.close();
+
+        // Extract username (text before @)
+        size_t atPos = email.find('@');
+        std::string username = email.substr(0, atPos);
+
+        // Create profiles/ folder if it doesn't exist
+#ifdef _WIN32
+        system("mkdir profiles >nul 2>&1");
+#else
+        system("mkdir -p profiles");
+#endif
+
+        // Create profile file in profiles/username.txt
+        std::string profilePath = "profiles/" + username + ".txt";
+        std::ofstream profileFile(profilePath);
+        if (profileFile.is_open()) {
+            profileFile << "Email: " << email << "\n";
+            profileFile << "Role: " << role << "\n";
+            profileFile << "Bookings:\n";
+            profileFile.close();
+        }
+        else {
+            std::cout << "\nERROR: Could not create profile file.\n";
             system("pause");
             return;
         }
 
-        outfile << email << "," << password << "," << role << "\n";
         std::cout << "\nRegistration successful! You can now log in.\n";
         system("pause");
-        valid = true;
+        return;
     }
 }
 
