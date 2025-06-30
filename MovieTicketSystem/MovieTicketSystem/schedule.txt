@@ -7,5 +7,4 @@ Cinema Paradiso|French|Drama|2025-07-01|11:15,15:15,19:15
 The Matrix|English|Sci-Fi|2025-07-01|12:30,16:30,20:30
 Portrait of a Lady on Fire|French|Mystery|2025-07-01|13:00,17:00,21:00
 Weathering With You|Spanish|Horror|2025-07-01|13:45,17:45,21:45
-The Handmaiden|Italian|Drama|2025-07-01|14:30,18:30,22:30
-
+The Handmaiden|Italian|Drama|2025-07-01|14:30,18:30,22:00

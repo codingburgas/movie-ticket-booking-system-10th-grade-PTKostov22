@@ -135,6 +135,7 @@
     <ClCompile Include="MovieTicketSystem.cpp" />
     <ClCompile Include="notification.cpp" />
     <ClCompile Include="search_movies.cpp" />
+    <ClCompile Include="update_movie.cpp" />
     <ClCompile Include="utills.cpp" />
     <ClCompile Include="view_booking.cpp" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <ClInclude Include="MovieTicketSystem.h" />
     <ClInclude Include="notification.h" />
     <ClInclude Include="search_movies.h" />
+    <ClInclude Include="update_movie.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="view_booking.h" />
   </ItemGroup>
