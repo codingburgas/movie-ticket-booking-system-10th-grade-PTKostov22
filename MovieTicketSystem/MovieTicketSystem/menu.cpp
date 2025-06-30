@@ -6,6 +6,7 @@
 #include "booking.h"
 #include "view_booking.h"
 #include "MovieTicketSystem.h"
+#include "admin_panel.h"
 
 void displayMenu(bool isAdmin) {
     system("cls");
@@ -46,8 +47,7 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
                 viewBookings(loggedInUserEmail);
                 break;
             case 4:
-                std::cout << "\nAccessing Admin Panel...\n\n";
-                system("pause");
+                adminPanel();
                 break;
             case 5:
                 std::cout << "\nExiting the system. Thank you!\n";
