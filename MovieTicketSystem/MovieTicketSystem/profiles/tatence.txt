@@ -8,3 +8,10 @@ City: Sofia
 Cinema: Mall of Sofia
 Showtime: English|Horror|2025-07-01|10:00
 Seats: A1 A2 A3 
+
+Booking:
+Movie: Titanic
+City: Varna
+Cinema: Grand Mall
+Showtime: English|Horror|2025-07-01|10:00
+Seats: A1 A3 A5 A7 

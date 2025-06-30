@@ -38,14 +38,35 @@ void pauseScreen() {
     std::cin.get();
 }
 
-std::vector<std::vector<Seat>> generateSeatLayout() {
+std::vector<std::string> loadBookedSeats(const std::string& movie, const std::string& cinema, const std::string& time) {
+    std::vector<std::string> bookedSeats;
+    std::ifstream in("booked_seats.txt");
+    std::string line;
+    while (std::getline(in, line)) {
+        std::stringstream ss(line);
+        std::string m, c, t, seat;
+        std::getline(ss, m, '|');
+        std::getline(ss, c, '|');
+        std::getline(ss, t, '|');
+
+        if (m == movie && c == cinema && t == time) {
+            while (std::getline(ss, seat, ',')) {
+                bookedSeats.push_back(seat);
+            }
+        }
+    }
+    return bookedSeats;
+}
+
+std::vector<std::vector<Seat>> generateSeatLayout(const std::vector<std::string>& bookedSeats) {
     std::vector<std::vector<Seat>> layout;
     for (char row = 'A'; row <= 'J'; ++row) {
         std::vector<Seat> seatRow;
         for (int col = 1; col <= 15; ++col) {
             Seat seat;
             seat.id = row + std::to_string(col);
-            seat.status = AVAILABLE;
+            seat.status = std::find(bookedSeats.begin(), bookedSeats.end(), seat.id) != bookedSeats.end()
+                ? BOOKED : AVAILABLE;
             seatRow.push_back(seat);
         }
         layout.push_back(seatRow);
@@ -54,19 +75,35 @@ std::vector<std::vector<Seat>> generateSeatLayout() {
 }
 
 void displaySeatLayout(const std::vector<std::vector<Seat>>& layout) {
-    std::cout << "\nSeat Layout (Green = Available):\n\n";
+    std::cout << "\nSeat Layout (Green = Available, Red = Booked):\n\n";
     for (const auto& row : layout) {
         for (const auto& seat : row) {
             switch (seat.status) {
             case AVAILABLE:
                 std::cout << "\033[32m" << seat.id << "\033[0m ";
                 break;
-            case RESERVED:
-                std::cout << "\033[37m" << seat.id << "\033[0m ";
+            case BOOKED:
+                std::cout << "\033[31m" << seat.id << "\033[0m ";
+                break;
+            default:
+                std::cout << seat.id << " ";
+            }
+        }
+        std::cout << "\n";
+    }
+
+    std::cout << "\nSeat Layout (Green = Available, Red = Booked):\n\n";
+    for (const auto& row : layout) {
+        for (const auto& seat : row) {
+            switch (seat.status) {
+            case AVAILABLE:
+                std::cout << "\033[32m" << seat.id << "\033[0m ";
                 break;
             case BOOKED:
                 std::cout << "\033[31m" << seat.id << "\033[0m ";
                 break;
+            default:
+                std::cout << seat.id << " ";
             }
         }
         std::cout << "\n";
@@ -187,7 +224,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
     std::cout << "Movie: " << selectedMovie.title << "\n";
     std::cout << "Showtime: " << selectedTime << "\n";
 
-    auto layout = generateSeatLayout();
+    std::vector<std::string> bookedSeats = loadBookedSeats(selectedMovie.title, selectedCinema, selectedTime);
+    auto layout = generateSeatLayout(bookedSeats);
     displaySeatLayout(layout);
 
     int numberOfSeats;
@@ -236,6 +274,16 @@ void selectSeats(const std::string& loggedInUserEmail) {
         }
         else {
             std::cout << "\nERROR: Could not open user profile file.\n";
+        }
+
+        std::ofstream bookedFile("booked_seats.txt", std::ios::app);
+        if (bookedFile.is_open()) {
+            bookedFile << selectedMovie.title << "|" << selectedCinema << "|" << selectedTime;
+            for (const auto& seat : selectedSeats) {
+                bookedFile << "|" << seat;
+            }
+            bookedFile << "\n";
+            bookedFile.close();
         }
     }
     else {

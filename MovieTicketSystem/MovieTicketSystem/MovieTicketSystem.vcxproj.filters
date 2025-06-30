@@ -30,6 +30,9 @@
     <ClCompile Include="booking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="view_booking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="booking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="view_booking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

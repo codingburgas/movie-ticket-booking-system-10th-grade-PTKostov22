@@ -4,6 +4,8 @@
 #include "menu.h"
 #include "search_movies.h"
 #include "booking.h"
+#include "view_booking.h"
+
 
 void displayMenu(bool isAdmin) {
     system("cls");
@@ -41,7 +43,7 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
                 system("pause");
                 break;
             case 3:
-                std::cout << "\nViewing Bookings...\n\n";
+                viewBookings(loggedInUserEmail);
                 system("pause");
                 break;
             case 4:
@@ -67,7 +69,7 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
                 system("pause");
                 break;
             case 3:
-                std::cout << "\nViewing Bookings...\n\n";
+                viewBookings(loggedInUserEmail);
                 system("pause");
                 break;
             case 4:

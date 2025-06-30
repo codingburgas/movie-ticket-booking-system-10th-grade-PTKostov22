@@ -1,1 +1,2 @@
-tatence@abv.bg,parola123@P,user
+nesh@admin.bg,1234
+papi@abv.bg,1234

@@ -1,0 +1,10 @@
+Email: papi@abv.bg
+Role: user
+Bookings:
+
+Booking:
+Movie: Titanic
+City: Ruse
+Cinema: Mall Ruse
+Showtime: English|Horror|2025-07-01|10:00
+Seats: A1 A3 C5 D7 J13 F15 H3 B14 
