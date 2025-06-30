@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="add_movie.cpp" />
     <ClCompile Include="admin_panel.cpp" />
     <ClCompile Include="booking.cpp" />
     <ClCompile Include="login.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="view_booking.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="add_movie.h" />
     <ClInclude Include="admin_panel.h" />
     <ClInclude Include="booking.h" />
     <ClInclude Include="login.h" />

@@ -42,6 +42,9 @@
     <ClCompile Include="admin_panel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="add_movie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="admin_panel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="add_movie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
