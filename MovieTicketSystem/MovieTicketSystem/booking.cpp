@@ -137,7 +137,6 @@ std::vector<MovieSchedule> loadSchedule() {
 
 void selectSeats(const std::string& loggedInUserEmail) {
     clearScreen();
-    std::cout << "DEBUG: Received loggedInUserEmail = '" << loggedInUserEmail << "'\n";
 
     std::vector<std::string> cities = { "Sofia", "Plovdiv", "Varna", "Burgas", "Ruse" };
     std::map<std::string, std::vector<std::string>> cinemas = {
@@ -250,8 +249,6 @@ void selectSeats(const std::string& loggedInUserEmail) {
         if (atPos != std::string::npos) {
             username = loggedInUserEmail.substr(0, atPos);
         }
-
-        std::cout << "DEBUG: Extracted username = '" << username << "'\n";
 
         std::string profilePath = "profiles/" + username + ".txt";
         std::ofstream profile(profilePath, std::ios::app);
