@@ -80,7 +80,7 @@ void registerUser() {
             continue;
         }
 
-        // Check if email contains "admin" (case-insensitive)
+        //Check if email contains "admin" (case-insensitive)
         std::string lowerEmail = email;
         std::transform(lowerEmail.begin(), lowerEmail.end(), lowerEmail.begin(), ::tolower);
         if (lowerEmail.find("admin") != std::string::npos) {

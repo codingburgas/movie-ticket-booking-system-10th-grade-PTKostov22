@@ -1,16 +1,16 @@
 ﻿#include <iostream>
 #include <string>
-#include <iomanip>
+#include <fstream>
 #include "menu.h"
 #include "search_movies.h"
 #include "booking.h"
 #include "view_booking.h"
-
+#include "MovieTicketSystem.h"
 
 void displayMenu(bool isAdmin) {
     system("cls");
     std::cout << "=========================================\n";
-    std::cout << "          Movie Ticket Booking System     \n";
+    std::cout << "          Movie Ticket Booking System    \n";
     std::cout << "=========================================\n";
     std::cout << "1. Search Movies\n";
     std::cout << "2. Book Ticket\n";
@@ -32,6 +32,7 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
     do {
         displayMenu(isAdmin);
         std::cin >> choice;
+        std::cin.ignore();
 
         if (isAdmin) {
             switch (choice) {
@@ -39,21 +40,18 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
                 searchMovies();
                 break;
             case 2:
-                void handleMenuChoice(bool isAdmin, const std::string & loggedInUserEmail);
-                system("pause");
+                selectSeats(loggedInUserEmail);
                 break;
             case 3:
                 viewBookings(loggedInUserEmail);
-                system("pause");
                 break;
             case 4:
                 std::cout << "\nAccessing Admin Panel...\n\n";
                 system("pause");
                 break;
             case 5:
-                std::cout << "\nЕxiting the system. Thank you!\n";
+                std::cout << "\nExiting the system. Thank you!\n";
                 break;
-
             default:
                 std::cout << "\nInvalid choice. Please try again.\n\n";
                 system("pause");
@@ -66,11 +64,9 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
                 break;
             case 2:
                 selectSeats(loggedInUserEmail);
-                system("pause");
                 break;
             case 3:
                 viewBookings(loggedInUserEmail);
-                system("pause");
                 break;
             case 4:
                 std::cout << "\nExiting the system. Thank you!\n";
@@ -81,4 +77,22 @@ void handleMenuChoice(bool isAdmin, const std::string& loggedInUserEmail) {
             }
         }
     } while ((isAdmin && choice != 5) || (!isAdmin && choice != 4));
+}
+
+std::string getLoggedInUserEmail() {
+
+    std::ifstream file("loggedInUser.txt");
+    if (!file.is_open()) {
+        return ""; 
+    }
+    std::string email;
+    std::getline(file, email);
+    file.close();
+    return email;
+}
+
+void runMenu() {
+    std::string email = getLoggedInUserEmail();
+    bool adminFlag = isUserAdmin(email);
+    handleMenuChoice(adminFlag, email);
 }

@@ -18,7 +18,9 @@ enum SeatStatus { AVAILABLE, RESERVED, BOOKED };
 
 struct Seat {
     std::string id;
-    SeatStatus status;
+    SeatStatus status = AVAILABLE;
+
+    Seat() : status(AVAILABLE) {}
 };
 
 struct MovieSchedule {

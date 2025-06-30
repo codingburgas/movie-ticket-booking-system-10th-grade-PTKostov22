@@ -5,6 +5,7 @@
 #include <string>
 #include <filesystem>
 #include "utils.h"
+#include "notification.h"
 
 void viewBookings(const std::string& loggedInUserEmail) {
     std::string username = loggedInUserEmail.substr(0, loggedInUserEmail.find('@'));
@@ -24,7 +25,8 @@ void viewBookings(const std::string& loggedInUserEmail) {
     }
     file.close();
 
-    std::vector<std::pair<int, int>> bookingRanges; // pairs of start and end line indices
+    std::vector<std::pair<int, int>> bookingRanges; // start and end line numbers of bookings
+
     for (size_t i = 0; i < lines.size(); ++i) {
         if (lines[i] == "Booking:") {
             int start = i;
@@ -67,8 +69,25 @@ void viewBookings(const std::string& loggedInUserEmail) {
         }
 
         auto range = bookingRanges[delIndex - 1];
+
+        // Extract details for notification
+        std::string movieTitle = "Unknown";
+        std::string cityName = "Unknown";
+        std::string cinemaName = "Unknown";
+        std::string showtime = "Unknown";
+
+        for (int i = range.first; i <= range.second; ++i) {
+            const std::string& l = lines[i];
+            if (l.find("Movie: ") == 0) movieTitle = l.substr(7);
+            else if (l.find("City: ") == 0) cityName = l.substr(6);
+            else if (l.find("Cinema: ") == 0) cinemaName = l.substr(8);
+            else if (l.find("Showtime: ") == 0) showtime = l.substr(10);
+        }
+
+        // Delete booking
         lines.erase(lines.begin() + range.first, lines.begin() + range.second + 1);
 
+        // Save updated profile
         std::ofstream out(filePath);
         for (const std::string& l : lines) {
             out << l << "\n";
@@ -76,6 +95,12 @@ void viewBookings(const std::string& loggedInUserEmail) {
         out.close();
 
         std::cout << "Booking deleted successfully.\n";
+
+        // Notification
+        std::string notifMsg = "Booking canceled for movie '" + movieTitle +
+            "' at " + cinemaName + " in " + cityName +
+            " on " + showtime + ".";
+        showNotification(notifMsg);
     }
 
     pauseScreen();

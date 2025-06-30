@@ -1,5 +1,3 @@
-Email: papi@abv.bg
+Email: pepi@admin.bg
 Role: user
 Bookings:
-
-

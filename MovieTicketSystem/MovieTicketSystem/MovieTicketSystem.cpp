@@ -3,6 +3,14 @@
 #include "menu.h"
 #include "login.h"
 
+bool isUserAdmin(const std::string& email) {
+    size_t atPos = email.find('@');
+    if (atPos == std::string::npos) return false;
+
+    std::string domain = email.substr(atPos + 1);
+    return domain.find("admin") != std::string::npos;
+}
+
 void showWelcomeMenu() {
     std::cout << "+---------------------------------------+\n";
     std::cout << "|     Movie Ticket Booking System       |\n";
@@ -23,11 +31,13 @@ int main() {
         showWelcomeMenu();
         std::cin >> choice;
 
-        std::cout << "DEBUG: loggedInUserEmail in main = '" << loggedInUserEmail << "'\n"; //tva e ok
+        std::cout << "DEBUG: loggedInUserEmail in main = '" << loggedInUserEmail << "'\n"; // this is fine
 
         switch (choice) {
         case 1:
             if (login(loggedInUserEmail, isAdmin)) {
+                isAdmin = isUserAdmin(loggedInUserEmail);
+
                 handleMenuChoice(isAdmin, loggedInUserEmail);
             }
             break;

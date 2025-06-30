@@ -140,6 +140,7 @@
     <ClInclude Include="booking.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="MovieTicketSystem.h" />
     <ClInclude Include="notification.h" />
     <ClInclude Include="search_movies.h" />
     <ClInclude Include="utils.h" />
