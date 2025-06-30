@@ -33,6 +33,12 @@
     <ClCompile Include="view_booking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="notification.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utills.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="view_booking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="notification.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

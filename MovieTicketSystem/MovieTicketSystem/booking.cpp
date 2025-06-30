@@ -5,6 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include "notification.h"
+#include "utils.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -30,12 +32,6 @@ void clearScreen() {
 #else
     system("clear");
 #endif
-}
-
-void pauseScreen() {
-    std::cout << "\nPress Enter to continue...";
-    std::cin.ignore();
-    std::cin.get();
 }
 
 std::vector<std::string> loadBookedSeats(const std::string& movie, const std::string& cinema, const std::string& time) {
@@ -271,6 +267,8 @@ void selectSeats(const std::string& loggedInUserEmail) {
             profile.close();
 
             std::cout << "\nBooking confirmed and saved to your profile!\n";
+
+            showNotification("New booking confirmed for " + selectedMovie.title + "!");
         }
         else {
             std::cout << "\nERROR: Could not open user profile file.\n";

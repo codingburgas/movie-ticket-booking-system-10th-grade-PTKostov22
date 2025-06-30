@@ -131,14 +131,18 @@
     <ClCompile Include="login.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="MovieTicketSystem.cpp" />
+    <ClCompile Include="notification.cpp" />
     <ClCompile Include="search_movies.cpp" />
+    <ClCompile Include="utills.cpp" />
     <ClCompile Include="view_booking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="booking.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="notification.h" />
     <ClInclude Include="search_movies.h" />
+    <ClInclude Include="utils.h" />
     <ClInclude Include="view_booking.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
