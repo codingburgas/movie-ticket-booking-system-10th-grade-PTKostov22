@@ -1,2 +1,3 @@
 papi@abv.bg,1234
 pepi@admin.bg,1234
+ivan@admin.bg,Parola123@

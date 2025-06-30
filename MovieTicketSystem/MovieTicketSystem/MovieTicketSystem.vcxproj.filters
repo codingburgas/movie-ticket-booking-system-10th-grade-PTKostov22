@@ -51,6 +51,12 @@
     <ClCompile Include="delete_movie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="add_admin.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="add_admin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">

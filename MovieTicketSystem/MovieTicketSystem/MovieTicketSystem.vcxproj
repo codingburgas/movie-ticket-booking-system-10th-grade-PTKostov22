@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="add_admin.cpp" />
+    <ClCompile Include="add_admin.h" />
     <ClCompile Include="add_movie.cpp" />
     <ClCompile Include="admin_panel.cpp" />
     <ClCompile Include="booking.cpp" />
