@@ -1,4 +1,3 @@
-Titanic|English|Horror|2025-07-01|10:00,14:00,18:00
 Amelie|Korean|Thriller|2025-07-01|11:00,15:00,19:00
 Frozen|Japanese|Romance|2025-07-01|09:30,13:30,17:30
 Burning|Korean|Sci-Fi|2025-07-01|12:00,16:00,20:00

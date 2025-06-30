@@ -2,6 +2,7 @@
 #include "admin_panel.h"
 #include "add_movie.h"
 #include "update_movie.h"
+#include "delete_movie.h"
 
 void adminPanel() {
     int choice = 0;
@@ -25,7 +26,7 @@ void adminPanel() {
             updateMovie();
             break;
         case 3:
-            std::cout << "Delete movie selected (functionality not implemented yet).\n";
+            deleteMovie();
             break;
         case 4:
             std::cout << "Add Admin selected (functionality not implemented yet).\n";

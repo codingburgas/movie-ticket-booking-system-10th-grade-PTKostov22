@@ -130,6 +130,7 @@
     <ClCompile Include="add_movie.cpp" />
     <ClCompile Include="admin_panel.cpp" />
     <ClCompile Include="booking.cpp" />
+    <ClCompile Include="delete_movie.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="MovieTicketSystem.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="add_movie.h" />
     <ClInclude Include="admin_panel.h" />
     <ClInclude Include="booking.h" />
+    <ClInclude Include="delete_movie.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="MovieTicketSystem.h" />

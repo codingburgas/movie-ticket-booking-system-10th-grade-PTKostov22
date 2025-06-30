@@ -48,6 +48,9 @@
     <ClCompile Include="update_movie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="delete_movie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="update_movie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_movie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
